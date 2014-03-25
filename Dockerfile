@@ -20,9 +20,6 @@ ENV HOME /root
 # init system will auto-generate one during boot.
 # RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
-# Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
-
 # -------- Put your own build instructions here --------
 
 RUN mkdir -p /root/.ssh
@@ -72,6 +69,9 @@ ADD runit_run/redis_run.sh /etc/service/redis/run
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Use baseimage-docker's init system -- this "boots" the container!
+ENTRYPOINT ["/sbin/my_init"]
 
 # EXAMPLE "docker run":
 #
