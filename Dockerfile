@@ -9,7 +9,7 @@
 #   https://index.docker.io/u/cohesiveft/haproxy-ssl-ssh/
 #   http://docs.docker.io/en/latest/examples/running_redis_service/ 
 #   https://github.com/phusion/baseimage-docker
-FROM phusion/baseimage:0.9.8
+FROM phusion/baseimage:0.9.9
 MAINTAINER biggers@utsl.com
 
 # Set correct environment variables.
