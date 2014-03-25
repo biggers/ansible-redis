@@ -71,11 +71,11 @@ ADD runit_run/redis_run.sh /etc/service/redis/run
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Use baseimage-docker's init system -- this "boots" the container!
-ENTRYPOINT ["/sbin/my_init"]
+CMD ["/sbin/my_init"]
 
 # EXAMPLE "docker run":
 #
-#   JOB=$(sudo docker run -d -p 22 -p 6379 -t ansible-redis:2.5 /sbin/my_init)
+#   JOB=$(sudo docker run -d -p 22 -p 6379 -t ansible-redis:2.5)
 #
 #   sudo docker ps -a
 #   ssh -vp NNNNN root@127.0.0.1
