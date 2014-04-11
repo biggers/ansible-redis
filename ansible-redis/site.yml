@@ -1,0 +1,9 @@
+---
+
+# RUN: ansible-playbook $PWD/redis.yml -i $PWD/hosts
+
+- name: Redis
+  hosts: local
+  sudo: yes
+  roles:
+    - ansible-redis
