@@ -41,12 +41,10 @@ RUN  add-apt-repository -y ppa:rquillo/ansible \
   && apt-get install -y ansible
 
 # Run the Ansible playbook
-RUN git clone https://github.com/biggers/ansible-redis.git /var/tmp/ansible-redis
+RUN git clone https://github.com/biggers/docker-ansible-redis.git /var/tmp/docker-ansible-redis
 ADD hosts /etc/ansible/hosts
-WORKDIR /var/tmp/ansible-redis
+WORKDIR /var/tmp/docker-ansible-redis/ansible-redis
 RUN ansible-playbook ./site.yml -c local
-
-EXPOSE  22 6379
 
 # -------- Put your own build instructions here --------
 
