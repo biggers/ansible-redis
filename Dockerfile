@@ -1,7 +1,7 @@
 # -*-sh-*-
 # ansible-redis/Dockerfile
 #
-# VERSION    13.10
+# VERSION    Ubuntu 14.04 / phusion-baseimage 0.9.10
 #
 # REFs: 
 #   http://www.ansible.com/blog/2014/02/12/installing-and-building-docker-with-ansible
@@ -9,7 +9,7 @@
 #   https://index.docker.io/u/cohesiveft/haproxy-ssl-ssh/
 #   http://docs.docker.io/en/latest/examples/running_redis_service/ 
 #   https://github.com/phusion/baseimage-docker
-FROM phusion/baseimage:0.9.9
+FROM phusion/baseimage:0.9.10
 MAINTAINER biggers@utsl.com
 
 # Set correct environment variables.
@@ -23,7 +23,7 @@ ENV HOME /root
 # -------- Put your own build instructions here --------
 
 RUN mkdir -p /root/.ssh
-ADD ./authorized_keys_dotssh  /root/.ssh/authorized_keys
+ADD ./authorized_keys_docker  /root/.ssh/authorized_keys
 
 # Ensure correct permissions for root/.ssh
 RUN  chmod 700 /root/.ssh \

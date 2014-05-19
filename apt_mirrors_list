@@ -1,0 +1,12 @@
+deb mirror://mirrors.ubuntu.com/mirrors.txt trusty main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-updates main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-backports main restricted universe multiverse
+deb mirror://mirrors.ubuntu.com/mirrors.txt trusty-security main restricted universe multiverse
+
+# This software is not part of Ubuntu, but is offered by Canonical and
+# the respective vendors as a service to Ubuntu users.
+deb http://archive.canonical.com/ubuntu trusty partner
+
+# This software is not part of Ubuntu, but is offered by third-party
+# developers who want to ship their latest software.
+deb http://extras.ubuntu.com/ubuntu trusty main
