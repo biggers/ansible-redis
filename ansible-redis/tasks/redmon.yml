@@ -9,8 +9,11 @@
   action: gem name={{ item }} state=present user_install=no #executable=/usr/bin/gem1.9.1
   with_items: redmon.gems
 
-- name: "Install Redmon runit script"
+- name: "Create Redmon service directory"
+  file: dest=/etc/service/{{ redmon.service }}  owner=root group=root state=directory
+
+- name: "Install Redmon service script"
   template: src=redmon-runit.sh dest=/etc/service/{{ redmon.service }}/run  owner=root group=root mode=0755
 
-- name: "Ensure Redis server is running"
+- name: "Ensure Redis service is running"
   action: service name={{ redmon.service }} state=started
