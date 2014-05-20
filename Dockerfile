@@ -42,6 +42,7 @@ RUN  add-apt-repository -y ppa:rquillo/ansible \
 
 # Run the Ansible playbook
 RUN git clone https://github.com/biggers/docker-ansible-redis.git /var/tmp/docker-ansible-redis
+# To force an Ansible playbook re-run on 'docker build' - CHANGE 'hosts'!
 ADD hosts /etc/ansible/hosts
 WORKDIR /var/tmp/docker-ansible-redis
 RUN ansible-playbook ./site.yml -c local
@@ -58,12 +59,16 @@ ADD logtime.sh  /etc/my_init.d/logtime.sh
 
 RUN mkdir -p /var/run
 
-# Redis DB service, via 'runit'
+# MOVE these (runit script) into the Playbook!
 RUN mkdir -p /var/redis
 ADD runit_run/redis.conf.in /etc/redis.conf
 
 RUN mkdir -p /etc/service/redis
 ADD runit_run/redis_run.sh /etc/service/redis/run
+
+# moved, to 'ansible-redis/tasks/redmon.yml'
+#RUN mkdir -p /etc/service/redmon
+#ADD runit_run/redmon_run.sh /etc/service/redmon/run
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

@@ -9,7 +9,7 @@
 
 # in our Docker images repo...
 TAG = biggers/docker-ansible-redis
-VERS = 2.0.0
+VERS = latest
 
 DOCKER_IMG = $TAG
 
