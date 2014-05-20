@@ -43,9 +43,9 @@ RUN  add-apt-repository -y ppa:rquillo/ansible \
 # Run the Ansible playbook
 RUN git clone https://github.com/biggers/docker-ansible-redis.git /var/tmp/docker-ansible-redis
 ADD hosts /etc/ansible/hosts
-WORKDIR /var/tmp/docker-ansible-redis/ansible-redis
+WORKDIR /var/tmp/docker-ansible-redis
 # **BROKEN** needs update for latest 1.6 Ansible
-#RUN ansible-playbook ./site.yml -c local
+RUN ansible-playbook ./site.yml -c local
 
 # -------- Put your own build instructions here --------
 

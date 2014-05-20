@@ -1,8 +1,8 @@
 ---
-# Install Redis
+# "Prepare to install Redis"
 - include: redis_deb.yml tags=redis
-  when: ansible_distribution in [ 'Debian', 'Ubuntu' ]
+  when: ansible_distribution in [ 'Ubuntu' ]
 
-# Install Redmon dashboard
-- include: redmon.yml tags=redis
-  when: with_redmon
+# "Install Redmon dashboard"
+- include: redmon.yml tags=redmon
+  when: with_redmon and ansible_distribution in [ 'Ubuntu' ]

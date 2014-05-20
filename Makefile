@@ -51,8 +51,11 @@ what_images:
 fetch:
 	sudo docker pull ${DOCKER_IMG}
 
-# -------- CLEAN.UP
+# -------- CLEAN.UP or debugging
 
 # make destroy JOB=foolish_pandora
 destroy: shutdown
 	sudo docker rm $$JOB
+
+redmon_build:
+	cd /var/tmp/docker-ansible-redis; ansible-playbook ./site.yml --skip-tags=redis -c local --
