@@ -1,16 +1,16 @@
 ---
 
-- name: "Point to latest Redis package(s) from Ubuntu PPA"
+- name: "redis | point to latest Redis packages from Ubuntu PPA"
   apt_repository: repo='ppa:rwky/redis'
 
-- name: "Install Redis server"
+- name: "redis | install service"
   apt: name={{ redis.deb.package }} state=latest update-cache=yes
 
-- name: "Bind Redis server to all interfaces"
+- name: "redis | bind service to all interfaces"
   action: lineinfile dest=/etc/redis/redis.conf state=present regexp="^#?bind" line="#bind 127.0.0.1"
   notify:
     - "Restart Redis"
 
-- name: "Ensure Redis server is running"
+- name: "redis | ensure service is running"
 #  sudo: yes
-  action: service name={{ redis.deb.service }} state=started
+  service: name={{ redis.deb.service }} enabled=yes

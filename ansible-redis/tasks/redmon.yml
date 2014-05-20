@@ -1,19 +1,23 @@
 ---
 
-- name: "Install Redmon dependencies"
+- name: "redmon | install dependencies"
 # sudo: yes
   apt: pkg={{ item }} state=installed update-cache=yes
   with_items: redmon.deb.dependencies
 
-- name: "Install Redmon gems"
+- name: "redmon | install required gems"
   action: gem name={{ item }} state=present user_install=no #executable=/usr/bin/gem1.9.1
   with_items: redmon.gems
 
-- name: "Create Redmon service directory"
+- name: "redmon | create runit service-directory"
   file: dest=/etc/service/{{ redmon.service }}  owner=root group=root state=directory
 
-- name: "Install Redmon service script"
+- name: "redmon | install runit run-script"
   template: src=redmon-runit.sh dest=/etc/service/{{ redmon.service }}/run  owner=root group=root mode=0755
 
-- name: "Ensure Redis service is running"
-  action: service name={{ redmon.service }} state=started
+- name: "redmon | install runit status-script"
+  template: src=redmon-runit.j2 dest=/etc/init.d/{{ redmon.service }} owner=root group=root mode=0755
+
+- name: "redmon | ensure service is running"
+  service: name={{ redmon.service }} state=started
+  #service: name={{ redmon.service }} pattern={{ redmon.bin }} enabled=yes

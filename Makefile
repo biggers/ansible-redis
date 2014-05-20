@@ -60,3 +60,6 @@ destroy: shutdown
 
 redmon_build:
 	cd /var/tmp/docker-ansible-redis; ansible-playbook ./site.yml --skip-tags=redis -c local --
+
+rm_junk:
+	for j in $$(sudo docker ps -q -n=$$num_containers); do make destroy JOB=$$j; done

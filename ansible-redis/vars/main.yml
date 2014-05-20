@@ -12,7 +12,7 @@ redmon:
       - 'g++'
       - 'make'
       - 'ruby1.9.1'
-      - 'ruby1.9.1-dev'      
+      - 'ruby1.9.1-dev'
   gems:
     - 'bundler'
     - 'redmon'
