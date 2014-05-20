@@ -41,9 +41,9 @@ RUN  add-apt-repository -y ppa:rquillo/ansible \
   && apt-get install -y ansible
 
 # Run the Ansible playbook
-RUN git clone https://github.com/biggers/docker-ansible-redis.git /var/tmp/docker-ansible-redis
 # To force an Ansible playbook re-run on 'docker build' - CHANGE 'hosts'!
 ADD hosts /etc/ansible/hosts
+RUN git clone https://github.com/biggers/docker-ansible-redis.git /var/tmp/docker-ansible-redis
 WORKDIR /var/tmp/docker-ansible-redis
 RUN ansible-playbook ./site.yml -c local
 
