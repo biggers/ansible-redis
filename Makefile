@@ -9,7 +9,7 @@
 
 # in our Docker images repo...
 TAG = biggers/docker-ansible-redis
-VERS = latest
+VERS = 2.0.0
 
 DOCKER_IMG = $TAG
 
@@ -20,10 +20,11 @@ DOCKER_IMG = $TAG
 build:
 	sudo docker build -t ${TAG} .
 
-.ONESHELL:
 # ONESHELL works only with 'remake' !! :-P (on Ubuntu)
+.ONESHELL:
+# forward SSH, Redis and Redmon ports!
 run_redis:
-	JOB=$$(sudo docker run -d -p 22 -p 6379 -t ${TAG}:${VERS})
+	JOB=$$(sudo docker run -d -p 22 -p 6379 -p 4567 -t ${TAG}:${VERS})
 	echo $$JOB
 	sudo docker ps -a
 	sudo docker logs $$JOB
