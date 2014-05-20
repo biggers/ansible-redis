@@ -8,17 +8,16 @@
 #  invocation of the shell..."
 
 # in our Docker images repo...
-TAG = mbiggers/docker-ansible-redis
-VERS = 3.0.0
+TAG = biggers/docker-ansible-redis
+VERS = latest
 
-DOCKER_IMG=phusion/baseimage:0.9.10
+DOCKER_IMG = $TAG
 
 # -------- do some Docker
 .PHONY: run_redis boot shutdown destroy stats status what_images destroy
 
 # for *updates* to "FROM spec", in the Dockerfile!
 build:
-	ln -s $$HOME/.ssh/authorized_keys authorized_keys_dotssh
 	sudo docker build -t ${TAG} .
 
 .ONESHELL:

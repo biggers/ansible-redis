@@ -44,7 +44,8 @@ RUN  add-apt-repository -y ppa:rquillo/ansible \
 RUN git clone https://github.com/biggers/docker-ansible-redis.git /var/tmp/docker-ansible-redis
 ADD hosts /etc/ansible/hosts
 WORKDIR /var/tmp/docker-ansible-redis/ansible-redis
-RUN ansible-playbook ./site.yml -c local
+# **BROKEN** needs update for latest 1.6 Ansible
+#RUN ansible-playbook ./site.yml -c local
 
 # -------- Put your own build instructions here --------
 
@@ -68,7 +69,7 @@ ADD runit_run/redis_run.sh /etc/service/redis/run
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Use baseimage-docker's init system -- this "boots" the container!
+# Use phusion/baseimage's init system -- this "boots" the container!
 CMD ["/sbin/my_init"]
 
 # EXAMPLE "docker run":
