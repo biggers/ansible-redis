@@ -54,6 +54,8 @@ Install GNU Make
 
 Build the Docker image
 ++++++++++++++++++++++
+(*See the References above; more info is coming*)
+
 
 Build the biggers/docker-ansible-redis image
 --------------------------------------------
@@ -64,6 +66,7 @@ Use the Makefile, and prosper (*details soon*)
 
 Create a working Docker container
 +++++++++++++++++++++++++++++++++
+(*See the References above*)
 
 Use Make to create a Redis/Redmon container
 -------------------------------------------
@@ -77,6 +80,7 @@ Use the Makefile, and prosper (*details soon*)
 
 Manage the Docker container
 +++++++++++++++++++++++++++
+(*See the References above*)
 
 Use the Docker cheatsheet, Luke!
 --------------------------------
