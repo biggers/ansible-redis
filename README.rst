@@ -1,7 +1,7 @@
 Redis, Redmon UI by Ansible-created Docker
 ==========================================
 
-:Author: Mark Biggers <mbiggers@ine.com>
+:Author: Mark Biggers <biggers@utsl.com>
 :Description: Redis and Redmon dashboard, via an Ansible-managed Docker container
 :Ref: `ansible-redis Github project <https://github.com/ICTO/ansible-redis>`_
 :Ref: `Docker installation on Ubuntu Linux <http://docs.docker.io/installation/ubuntulinux/>`_
